@@ -10,6 +10,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DetailComponent } from './pages/detail/detail.component';
+import { AuthenticationService } from './core/services/authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { DetailComponent } from './pages/detail/detail.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

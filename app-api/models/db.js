@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var dbURI = 'mongodb://localhost/serverSentinel';
 
-mongoose.connect('mongodb://localhost/serverSentinel', {useNewUrlParser: true});
+mongoose.connect(dbURI, {useNewUrlParser: true});
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {

@@ -86,7 +86,7 @@ export class AuthenticationService {
     return this.request('post', 'login', user);
   }
 
-  public profile(): Observable<any> {
+  public detail(): Observable<any> {
     return this.request('get', 'detail');
   }
 

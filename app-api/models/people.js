@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
@@ -33,3 +34,4 @@ userSchema.methods.generateJwt = function() {
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE! //TODO ON DEPLOYMENT SAVE AS ENV. VAR.
 };
 
+mongoose.model('User', userSchema);

@@ -8,13 +8,17 @@ var cors = require('cors');
 var passport = require('passport');
 
 //bring in the data model
-require('./app-api/models/db');
+require('./api/models/db');
 //bring in passport for easy login
-require('./app-api/config/passport');
+require('./api/config/passport');
 
-var routesApi = require('./app-api/routes/index');
+var routesApi = require('./api/routes/index');
 
 var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

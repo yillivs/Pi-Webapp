@@ -1,8 +1,8 @@
 <div class="header">
 	<a href="home" class="logo"><img src="../../../assets/logo.png" width="50" height="50">Server Sentinel</a>
 	<div class="header-right">
-		<a class ="active" href="login">Login</a>
-		<a href="register">Register</a>
-		<a href="detail">Detail</a>
+		<li *ngIf="!auth.isLoggedIn()"><a class="active" routerLink="/login">Login</a></li>
+		<li *ngIf="!auth.isLoggedIn()"><a routerLink="/register">Register</a></li>
+		<li *ngIf="auth.isLoggedIn()"><a routerLink="/detail">Detail</a><li>
 	</div>
 </div>

@@ -4,7 +4,7 @@ Interface for Temp-Pi (https://github.com/Cookie150CC/TempPi)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` from /frontend to start Angular development server. Start the express server running `node api.js` or `nodemon api.js` from the top-level directory. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. You will need an instance of Mongodb running with the database name as `serverSentinel`.
 
 ## Code scaffolding
 

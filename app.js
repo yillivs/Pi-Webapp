@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var passport = require('passport');
 
+
 //bring in the data model
 require('./api/models/db');
 //bring in passport for easy login
@@ -16,6 +17,7 @@ var routesApi = require('./api/routes/index');
 
 var app = express();
 
+app.listen(3000, ()=>console.log('Express server on port 3000'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

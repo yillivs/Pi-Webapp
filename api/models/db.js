@@ -30,4 +30,4 @@ process.on('SIGINT', function() {
   });
 });
 
-require('./people');
+require('./users');

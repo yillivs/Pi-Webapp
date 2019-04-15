@@ -12,6 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { AuthenticationService } from './core/services/authentication/authentication.service';
 import { HomeComponent } from './pages/home/home.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { AuthGuardService } from './core/services/auth-guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
     LoginComponent,
     DetailComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { HomeComponent } from './pages/home/home.component';
     FormsModule
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

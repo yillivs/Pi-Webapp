@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-       <p>
-         Add data from rasberry pi here
-      </p>
+       <h1>Rasberry-Pi Configurations</h1>
+       <form>
+        <div class="form-group" *ngFor="let alerts of alert | keyvalue"> 
+          <label for="alerts">{{titles[alerts.key]}}</label>
+          <input name="alerts" class="form-control">
+        </div>
+          <button type="submit" class="btn btn-primary">Update Config</button>
+        </form>
     </div>
   </div>
 </div>

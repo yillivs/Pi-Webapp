@@ -3,7 +3,7 @@
 	<ul class="nav justify-content-end">
 		<li class="nav-item" *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/login']">Login</a></li>
 		<li class="nav-item" *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/register']">Register</a></li>
-		<li class="nav-item" *ngIf="auth.isLoggedIn()"><a [routerLink]="['/detail']">Detail</a><li>
+		<li class="nav-item" *ngIf="auth.isLoggedIn()"><a [routerLink]="['/detail']">Config</a><li>
 		<li class="nav-item" *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
 	</ul>
 </div>

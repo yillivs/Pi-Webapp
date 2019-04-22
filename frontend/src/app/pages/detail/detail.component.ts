@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service'
 import { GlobalConfig } from '../../core/services/global-config/global-config.service';
-import { config } from 'rxjs';
 
 
 @Component({
@@ -11,10 +10,10 @@ import { config } from 'rxjs';
 })
 export class DetailComponent implements OnInit  {
   alert: number[];
+  alertTitles: string[];
   logInterval: number;
   wifi: number[];
-  config : GlobalConfig;
-  titles: string[];
+  wifiTitles: string[];
   
   
   constructor(private auth: AuthenticationService) { }
@@ -22,7 +21,10 @@ export class DetailComponent implements OnInit  {
   ngOnInit() {
       this.auth.detail().subscribe(data => {
       this.alert = this.setAlertArray(data);
-      this.titles = ["General","Threshold","Send Interval"];
+      this.alertTitles = ["General","Threshold","Send Interval"]
+      this.logInterval = data.logInterval;
+      this.wifi = this.setWifiArray(data);
+      this.wifiTitles = ["Network","Key","Security"];
     }, (err) => {
       console.error(err);
     });
@@ -33,5 +35,9 @@ export class DetailComponent implements OnInit  {
 
   setWifiArray(obj: GlobalConfig)  {
     return Object.keys(obj.wifi).map((key) => {return obj.wifi[key]});
+  }
+
+  updateJSON(){
+
   }
 }

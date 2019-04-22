@@ -94,6 +94,10 @@ export class AuthenticationService {
     return this.request('get', 'detail');
   }
 
+  public updateDetail(): Observable<any> {
+    return this.request('post', 'detail')
+  }
+
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('mean-token');

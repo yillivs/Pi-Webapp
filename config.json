@@ -1,13 +1,1 @@
-{
-		"alert": {
-			"general": "24",
-			"threshold": "85",
-			"sendInterval": "10"
-		},
-		"logInterval": "10",
-		"wifi": {
-			"network": "dd-wrt",
-			"key": "rickandmortydotcom",
-			"security": "wpa2"
-		}
-}
+{"alert":{"general":"24","threshold":"85","sendInterval":"10"},"logInterval":"10","wifi":{"network":"dd-wrt","key":"rickandmortydotcom","security":"wpa2"}}

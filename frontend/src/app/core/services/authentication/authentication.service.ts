@@ -22,6 +22,12 @@ export interface TokenPayload {
   name?: string;
 }
 
+export interface GlobalConfig {
+  alert: number[];
+  logInterval: number;
+  wifi: string[];
+}
+
 @Injectable()
 export class AuthenticationService {
   private token: string;
@@ -61,16 +67,16 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'detail', user?: TokenPayload): Observable<any> {
+  private requestUser(method: 'post'|'get', type: 'login'|'register'|'detail', msg?: any): Observable<any> {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(`/api/${type}`, user);
+      base = this.http.post(`/api/${type}`, msg);
     } else {
       base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
-    const request = base.pipe(
+    const requestUser = base.pipe(
       map((data: TokenResponse) => {
         if (data.token) {
           this.saveToken(data.token);
@@ -78,24 +84,22 @@ export class AuthenticationService {
         return data;
       })
     );
-
-    return request;
+    return requestUser;
   }
 
   public login(user: TokenPayload): Observable<any> {
-    return this.request('post', 'login', user);
+    return this.requestUser('post', 'login', user);
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.request('post', 'register', user);
+    return this.requestUser('post', 'register', user);
   }
 
   public detail(): Observable<any> {
-    return this.request('get', 'detail');
+    return this.requestUser('get', 'detail');
   }
-
-  public updateDetail(): Observable<any> {
-    return this.request('post', 'detail')
+  public updateDetail(config: GlobalConfig): Observable<any> {
+    return this.requestUser('post','detail', config);
   }
 
   public logout(): void {

@@ -6,12 +6,27 @@ module.exports.detailRead = function(req, res){
           "message" : "UnauthorizedError: private profile"
         });
     } else {
-            var obj;
+            var obj
             fs.readFile('config.json', 'utf8', function (err, data) {
             if (err) throw err;
-            obj = JSON.parse(data);
-            console.log(obj);
-            res.json(obj);
+            obj = JSON.parse(data)
+            res.json(obj)
     });
     }
+}
+
+module.exports.detailWrite = function(req, res){
+        var obj
+        console.log(JSON.stringify(req.header));
+        console.log(JSON.stringify(req.body));
+        try{
+          fs.writeFile('config.json', JSON.stringify(req.body), function(err,result){
+            if(err)
+            console.log(err)
+          })
+          obj = JSON.stringify(req.body)
+        } catch(err){
+          console.error(err)
+        }
+        res.json(obj)
 }

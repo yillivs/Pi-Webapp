@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../core/services/authentication/authentication.service'
-import { GlobalConfig } from '../../core/services/global-config/global-config.service';
+import { AuthenticationService, GlobalConfig } from '../../core/services/authentication/authentication.service'
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -9,35 +9,28 @@ import { GlobalConfig } from '../../core/services/global-config/global-config.se
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit  {
-  alert: number[];
-  alertTitles: string[];
-  logInterval: number;
-  wifi: number[];
-  wifiTitles: string[];
+
+  config: GlobalConfig;
   
-  
-  constructor(private auth: AuthenticationService) { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
       this.auth.detail().subscribe(data => {
-      this.alert = this.setAlertArray(data);
-      this.alertTitles = ["General","Threshold","Send Interval"]
-      this.logInterval = data.logInterval;
-      this.wifi = this.setWifiArray(data);
-      this.wifiTitles = ["Network","Key","Security"];
+        this.config = data;
     }, (err) => {
       console.error(err);
     });
   }
-  setAlertArray (obj: GlobalConfig) {
-    return Object.keys(obj.alert).map((key) => {return obj.alert[key]});
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
   }
 
-  setWifiArray(obj: GlobalConfig)  {
-    return Object.keys(obj.wifi).map((key) => {return obj.wifi[key]});
-  }
-
-  updateJSON(){
-
+  updateJSON(config: GlobalConfig){
+      this.auth.updateDetail(this.config).subscribe(()=> {
+        this.router.navigateByUrl('/home');
+      }, (err)=> {
+        console.error(err);
+      })
   }
 }

@@ -17,7 +17,6 @@ module.exports.detailRead = function(req, res){
 
 module.exports.detailWrite = function(req, res){
         var obj
-        console.log(JSON.stringify(req.header));
         console.log(JSON.stringify(req.body));
         try{
           fs.writeFile('config.json', JSON.stringify(req.body), function(err,result){

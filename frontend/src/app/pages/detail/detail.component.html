@@ -5,9 +5,9 @@
        <form (submit)="updateJSON()">
         <div class="row">  
           <div class="col-md-6">
-            <div class="form-group" *ngFor="let alerts of config?.alert;let index = i;trackBy:trackByIndex"> 
+            <div class="form-group" *ngFor="let alerts of config?.alert | keyvalue;trackBy: trackAlert"> 
               <label for="alerts">{{alerts.key}}</label>
-              <input name="alerts" placeholder="{{alerts}}" [(ngModel)]="config?.alert[i]" class="form-control">
+              <input name="alerts" placeholder="{{alerts.value}}" [(ngModel)]="alerts.id" class="form-control">
             </div>
             <div class="form-group">
               <label>Log Interval</label>

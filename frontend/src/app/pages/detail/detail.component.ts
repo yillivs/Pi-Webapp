@@ -22,9 +22,15 @@ export class DetailComponent implements OnInit  {
     });
   }
 
-  trackByIndex(index: number, obj: any): any {
+  trackByIndex(index: any, obj: any): any {
+    if(obj)return null
     return index;
   }
+
+  trackAlert(index, obj) {
+    return obj ? obj.id : undefined;
+
+}
 
   updateJSON(config: GlobalConfig){
       this.auth.updateDetail(this.config).subscribe(()=> {

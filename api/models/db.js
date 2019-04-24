@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var dbURI = 'mongodb://localhost/serverSentinel';
+var dbURI = 'mongodb://root:4loops4ever@ds261460.mlab.com:61460/heroku_0pg9bwkr';
 
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
